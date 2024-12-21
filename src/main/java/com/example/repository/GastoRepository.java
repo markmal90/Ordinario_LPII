@@ -7,16 +7,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.collectors;
+import java.util.stream.Collectors;
 
 
 public class GastoRepository {
     private List<Gasto> gastos = new ArrayList<>();
-	private ObjetMapper objectMapper = new ObjectMapper();
-	private File file = new File("sec/main/resources/data.json");
+	private ObjectMapper objectMapper = new ObjectMapper();
+	private File file = new File("src/main/resources/data.json");
 
-		public GastoRepository {
+		public GastoRepository() {
 			try {
-				Gasto[] gastosArray = ObjetMapper.readValue(file, Gasto)
-    
-}
+				Gasto[] gastosArray = ObjetMapper.readValue(file, Gasto);
+					for (Gasto gasto: gastosArray){
+					gastos.add(gasto);
+					}
+
+
+			}catch (IOException e){
+				e.printStackTrace();
+			}
+		}
+		}
